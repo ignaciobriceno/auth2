@@ -12,8 +12,17 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Link1</a></li>
-        <li><a href="#">Link2</a></li>
+        <li class="nav-item">
+        <%= link_to "Salir", destroy_user_session_path, method: :delete if user_signed_in?%>
+        </li>
+        <% unless user_signed_in?%>
+        <li class="nav-item mx-3">
+        <%= link_to "Sign_up", new_user_registration_path  %>
+        </li>
+        <li class="nav-item">
+        <li><%= link_to "Sign_in",  new_user_session_path%></li>
+        </li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
